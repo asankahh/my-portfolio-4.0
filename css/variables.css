@@ -1,0 +1,24 @@
+:root {
+  /* Colors */
+  --bg-primary: #0a192f;
+  --bg-secondary: #112240;
+  --text-primary: #ccd6f6;
+  --text-secondary: #8892b0;
+  --accent: #64ffda;
+  --accent-glow: rgba(100, 255, 218, 0.1);
+  --white: #e6f1ff;
+
+  /* Fonts */
+  --font-main: 'Inter', sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', monospace;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 6rem;
+
+  /* Transitions */
+  --transition-default: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
