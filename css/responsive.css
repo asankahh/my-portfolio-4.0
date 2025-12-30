@@ -1,0 +1,118 @@
+/* Responsive Styles */
+
+@media screen and (max-width: 768px) {
+
+    /* Layout Utilities */
+    .grid-2,
+    .grid-3 {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        width: 90%;
+        padding: 0 1rem;
+    }
+
+    section {
+        padding: 80px 0;
+        /* Reduced padding for mobile */
+        min-height: auto;
+        /* Allow sections to be natural height */
+    }
+
+    /* Navigation */
+    .nav-content {
+        justify-content: space-between;
+    }
+
+    .menu-toggle {
+        display: block;
+        /* Visible on mobile */
+        cursor: pointer;
+        z-index: 101;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        background-color: var(--bg-secondary);
+        width: 75%;
+        /* Drawer width */
+        max-width: 300px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(100%);
+        /* Hidden by default */
+        transition: transform 0.3s ease-in-out;
+        box-shadow: -10px 0 30px -10px rgba(2, 12, 27, 0.7);
+        z-index: 99;
+    }
+
+    .nav-links.active {
+        transform: translateX(0%);
+        /* visible */
+    }
+
+    .nav-link {
+        font-size: 1.2rem;
+        margin: 1.5rem 0;
+    }
+
+    /* Hero Section */
+    #hero {
+        text-align: left;
+        /* Keep left alignment or center if preferred */
+        min-height: 100vh;
+        /* Keep hero full height */
+        justify-content: center;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+        /* Fallback/Specific size */
+    }
+
+    .hero-subtitle {
+        font-size: 2rem;
+    }
+
+    .hero-cta-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .btn,
+    .btn-outline {
+        width: 100%;
+        margin-left: 0 !important;
+        /* Override inline/component margin */
+        text-align: center;
+    }
+
+    /* About Section */
+    .about-visual {
+        margin-top: 2rem;
+        order: -1;
+        /* Show image above text on mobile? Or keep below. */
+    }
+
+    /* Cards */
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .card-subtitle {
+        font-size: 0.85rem;
+    }
+
+    /* Contact */
+    #contact h2 {
+        font-size: 2.5rem;
+    }
+}
