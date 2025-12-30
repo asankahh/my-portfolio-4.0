@@ -111,6 +111,14 @@ section {
     align-items: center;
 }
 
+.menu-toggle {
+    display: none;
+    /* Hidden on desktop */
+    color: var(--accent);
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
 .nav-logo {
     position: relative;
     display: flex;
