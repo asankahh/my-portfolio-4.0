@@ -1,0 +1,248 @@
+/* Layout & Sections */
+
+/* Animated Background */
+.bg-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+    background-color: var(--bg-primary);
+    /* Fallback/Base */
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.8;
+    animation: floatBlobs 20s infinite alternate cubic-bezier(0.45, 0.05, 0.55, 0.95);
+    mix-blend-mode: screen;
+    /* Helps colors glow */
+}
+
+.blob-1 {
+    width: 50vh;
+    height: 50vh;
+    background: var(--accent);
+    top: 0%;
+    left: 0%;
+    opacity: 0.4;
+    /* Increased from 0.15 */
+    animation-duration: 25s;
+}
+
+.blob-2 {
+    width: 60vh;
+    height: 60vh;
+    background: #1d3557;
+    /* Richer Navy */
+    bottom: 0%;
+    right: 0%;
+    opacity: 0.5;
+    animation-duration: 30s;
+    animation-delay: -5s;
+}
+
+.blob-3 {
+    width: 45vh;
+    height: 45vh;
+    background: #3a506b;
+    /* Lighter Slate */
+    top: 30%;
+    left: 30%;
+    opacity: 0.4;
+    animation-duration: 22s;
+    animation-delay: -10s;
+}
+
+@keyframes floatBlobs {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(30px, -50px) scale(1.1);
+    }
+
+    66% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
+
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+.container {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--spacing-lg) 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    position: relative;
+}
+
+/* Header/Nav */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1.5rem 0;
+    background: rgba(10, 25, 47, 0.85);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    transition: var(--transition-default);
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-toggle {
+    display: none;
+    /* Hidden on desktop */
+    color: var(--accent);
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+.nav-logo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-logo-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    z-index: 1;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    border: 2px solid var(--accent);
+    opacity: 1;
+    /* Visible by default */
+}
+
+.nav-logo-text {
+    position: relative;
+    z-index: 2;
+    color: var(--accent);
+    /* Changed to accent for better visibility */
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    /* Hidden by default */
+}
+
+/* Scrolled State for Logo */
+.navbar.scrolled .nav-logo-img {
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
+}
+
+.navbar.scrolled .nav-logo-text {
+    opacity: 1;
+    /* Visible on scroll */
+}
+
+.nav-links {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.nav-link {
+    color: var(--white);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+}
+
+.nav-link:hover {
+    color: var(--accent);
+}
+
+/* Grid Layouts */
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+}
+
+/* Hero Section Styles */
+.hero-intro {
+    color: var(--accent);
+    font-family: var(--font-mono);
+    margin-bottom: 1.25rem;
+}
+
+.hero-title {
+    font-size: clamp(40px, 8vw, 80px);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+    font-size: clamp(30px, 6vw, 60px);
+    font-weight: 700;
+    color: var(--text-secondary);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.hero-desc {
+    max-width: 540px;
+    font-size: 1.15rem;
+}
+
+.hero-cta-wrapper {
+    margin-top: 3rem;
+}
+
+/* Utilities */
+.text-accent {
+    color: var(--accent);
+}
+
+.text-secondary {
+    color: var(--text-secondary);
+}
+
+.font-mono {
+    font-family: var(--font-mono);
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+}
