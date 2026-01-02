@@ -111,6 +111,12 @@ section {
     align-items: center;
 }
 
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
 .menu-toggle {
     display: none;
     /* Hidden on desktop */

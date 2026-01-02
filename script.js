@@ -97,4 +97,90 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Theme Toggle Logic
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    const icon = themeToggle.querySelector('i');
+
+    // Check for saved user preference, if any, on load
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        if (currentTheme === 'light') {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        }
+    }
+
+    themeToggle.addEventListener('click', () => {
+        let theme = document.documentElement.getAttribute('data-theme');
+        if (theme === 'light') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        }
+    });
+
+    // Custom Cursor Logic
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorOutline = document.querySelector('.cursor-outline');
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let outlineX = 0;
+    let outlineY = 0;
+
+    window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        // Show cursor when it moves
+        cursorDot.style.opacity = '1';
+        cursorOutline.style.opacity = '1';
+    });
+
+    const animateCursor = () => {
+        // Outline lag effect
+        outlineX += (mouseX - outlineX) * 0.15;
+        outlineY += (mouseY - outlineY) * 0.15;
+
+        cursorDot.style.left = `${mouseX}px`;
+        cursorDot.style.top = `${mouseY}px`;
+
+        cursorOutline.style.left = `${outlineX}px`;
+        cursorOutline.style.top = `${outlineY}px`;
+
+        requestAnimationFrame(animateCursor);
+    };
+
+    animateCursor();
+
+    document.addEventListener('mouseleave', () => {
+        cursorDot.style.opacity = '0';
+        cursorOutline.style.opacity = '0';
+    });
+
+    // Hover effects for cursor
+    const interactiveElements = document.querySelectorAll('a, button, .menu-toggle, .stat-card, .card');
+    interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursorOutline.style.width = '60px';
+            cursorOutline.style.height = '60px';
+            cursorOutline.style.backgroundColor = 'rgba(100, 255, 218, 0.1)';
+            cursorOutline.style.borderColor = 'transparent';
+        });
+        el.addEventListener('mouseleave', () => {
+            cursorOutline.style.width = '40px';
+            cursorOutline.style.height = '40px';
+            cursorOutline.style.backgroundColor = 'transparent';
+            cursorOutline.style.borderColor = 'var(--accent)';
+        });
+    });
 });

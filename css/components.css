@@ -16,7 +16,56 @@
     overflow: hidden;
 }
 
+/* Theme Toggle Button */
+.theme-toggle {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: var(--transition-default);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+/* Custom Cursor */
+.cursor-dot,
+.cursor-outline {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent);
+}
+
+.cursor-outline {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--accent);
+}
+
+.theme-toggle:hover {
+    color: var(--accent);
+    background: var(--bg-secondary);
+}
+
 .btn:hover {
+
     background: var(--accent-glow);
     transform: translateY(-3px);
     box-shadow: 0 4px 15px rgba(100, 255, 218, 0.2);

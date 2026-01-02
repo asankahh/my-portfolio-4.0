@@ -25,6 +25,10 @@
         justify-content: space-between;
     }
 
+    .nav-right {
+        gap: 1rem;
+    }
+
     .menu-toggle {
         display: block;
         /* Visible on mobile */

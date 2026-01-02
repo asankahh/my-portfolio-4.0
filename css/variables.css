@@ -22,3 +22,13 @@
   /* Transitions */
   --transition-default: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
+
+[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f0f2f5;
+  --text-primary: #1d1d1f;
+  --text-secondary: #4a5568;
+  --accent: #00bfa5; /* Slightly darker teal for better contrast on white */
+  --accent-glow: rgba(0, 191, 165, 0.15);
+  --white: #112240; /* Inverted for text elements that use var(--white) */
+}
